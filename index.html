@@ -30,9 +30,43 @@
 
     <script id="hackSpotsTable" type="text/html">
         <table>
-            <tr><th class="tHeader">Name</th><th class="tHeader">Form</th><th class="tHeader">Sex</th><th class="tHeader">Amount</th><th class="tHeader">Country</th><th class="">Elsewhere</th></tr>
+            <tr>
+                <th class="tHeader">Name</th>
+                <th class="tHeader">Pokemon</th>
+                <th class="tHeader">Types</th>
+                <th class="tHeader">Ability</th>
+                <th class="tHeader">Nature</th>
+                <th class="tHeader">HP</th>
+                <th class="tHeader">Atk</th>
+                <th class="tHeader">Def</th>
+                <th class="tHeader">SpA</th>
+                <th class="tHeader">SpD</th>
+                <th class="tHeader">Spe</th>
+                <th class="tHeader">Moves</th>
+                <th class="tHeader">Balls</th>
+                <th class="">Elsewhere</th>
+            </tr>
             {{#rows}}
-                <tr id="{{rowNumber}}" class="spotRow"><td>{{name}}</td><td>{{form}}</td><td>{{sex}}</td><td>{{amount}}</td><td>{{country}}</td><td><a class="button" href="https://maps.google.com/maps?q={{form}},{{Sex}},{{amount}}" target="_blank">G Map</a> <a class="button" href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{Sex}},{{amount}}" target="_blank">Yelp</a></td></tr>
+                <tr id="{{rowNumber}}" class="spotRow">
+                    <td>{{name}}</td>
+                    <td>{{name}}</td>
+                    <td>{{form}}</td>
+                    <td>{{sex}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{country}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{amount}}</td>
+                    <td><a class="button" href="https://maps.google.com/maps?q={{form}},{{Sex}},{{amount}}"
+                            target="_blank">G Map</a> <a class="button"
+                            href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{Sex}},{{amount}}"
+                            target="_blank">Yelp</a></td>
+                </tr>
             {{/rows}}
         </table>
     </script>
