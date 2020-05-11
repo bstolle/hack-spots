@@ -1,5 +1,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
+![license](https://img.shields.io/github/license/bstolle/pokedex.svg)
+
 # Pokédex
 
 A quick site for browsing pokemon and visualizing any pokemon lists.
