@@ -23,7 +23,6 @@
                   <i class="fa fa-search"></i>
                </button>
              </div>
-            <!-- <input id="tableFilter" type="text" placeholder="filter by.."></input> -->
             <span class="noMatches">no matches</span>
             <div id="pokedexTable"></div>
         </div>
@@ -203,17 +202,17 @@
             // when someone clicks on a row, highlight it and
             // re-center the map
             // TODO show popup, change marker color
-            // $('.spotRow').live("click", function(event) {
-            //     $('.spotRow').removeClass("selectedRow")
-            //     var rowNumber = $(this).closest("tr").attr("id")
-            //     $('#' + rowNumber).addClass("selectedRow")
+             $('.spotRow').live("click", function(event) {
+                 $('.spotRow').removeClass("selectedRow")
+                var rowNumber = $(this).closest("tr").attr("id")
+                $('#' + rowNumber).addClass("selectedRow")
             //     var dataElement = Sheetsee.getMatches(data, rowNumber, "rowNumber")
             //     var selectedSpot = Sheetsee.ich.selectedSpot({
             //         rows: dataElement
             //     })
             //     $('#latestSpot').css("display", "none")
             //     $('#selectedSpot').html(selectedSpot).css("display", "inline")
-            // })
+             })
 
             // so that the first map and info that loads
             // is complete and doesn't show rows that are

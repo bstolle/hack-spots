@@ -73,18 +73,6 @@ text {
   box-shadow: 0px 3px 6px  rgba(0,0,0, 0.2);
 }
 
-/* #tableFilter {
-  margin: 12px 0px;
-  border: none;
-  border-bottom: 1px solid #333;
-  background-color: transparent;
-  padding: 0px;
-  font-family: Merriweather;
-  color: #fff;
-  font-size: 13px;
-  height: 22px;
-} */
-
 .noMatches {
   margin-left: 20px;
   font-size: 11px;
