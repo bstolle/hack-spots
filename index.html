@@ -53,7 +53,7 @@
                 <th class="">Bulbapedia</th>
             </tr>
             {{#rows}}
-                <tr id="{{rowNumber}}" class="spotRow">
+                <tr id="{{@index}}" class="spotRow">
                     <td class="dexNo">{{Dex No}}</td>
                     <td class="smallSprite"><span 
                         class="{{Name}}img"
@@ -187,9 +187,6 @@
             // useful bits from the original data
             //var optionsJSON = ["Name", "Form", "Sex", "rowNumber"]
             //var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
-            //var pokename = data[2].name;
-            //pokename = pokename.toLowerCase();
-            //console.log(pokename)//.toLowerCase());
             //console.log(geoJSON);
             // find the latest spot with the most important
             // info filled in (to prevent map breaking if
