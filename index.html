@@ -15,6 +15,7 @@
 <body>
     <div id="wrapper">
         <h1>Pokedex</h1>
+        <p id="pokemonCount"></p>
         <div class="container">
             <input id="tableFilter" type="text" placeholder="filter by.."></input>
             <span class="noMatches">no matches</span>
@@ -22,7 +23,6 @@
         </div>
         <div id="info" class="container">
            <p>footer</p>
-           <p id="theNumberofSpots"></p>
     </div><!-- end wrapper -->
 
     <script id="hackSpotsTable" type="text/html">
@@ -74,11 +74,8 @@
                         style="repeat scroll 0% 0%; display: inline-block;">
                         <img src="https://raw.githubusercontent.com/msikma/pokesprite/master/items/ball//{{Ball}}.png"/>
                     </span></td>
-                    <td><a class="button" href="https://bulbapedia.bulbagarden.net/wiki/{{Name}}_(Pok%C3%A9mon)"
+                    <td><a href="https://bulbapedia.bulbagarden.net/wiki/{{Name}}_(Pok%C3%A9mon)"
                             target="_blank">visit</a> 
-                            <!-- <a class="button"
-                            href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{Sex}},{{amount}}"
-                            target="_blank">Yelp</a> -->
                         </td>
                 </tr>
             {{/rows}}
@@ -107,7 +104,7 @@
         {{/rows}}
     </script>
 
-    <script id="theNumberofSpots" type="text/html">
+    <script id="pokemonCount" type="text/html">
         <p><strong><span class="red-text">{{numberOfSpots}}</span> pokemon!</p>
     </script>
 
@@ -144,10 +141,8 @@
         // so long, so messy
         function showInfo(data, tabletop) {
             console.log(tabletop.sheets("Living Dex"));
-           // $.each(data, function( index, value ) {
-                //value["ImageName"] = value.Name.toLowerCase();
-                //console.log(value.ImageName);  
-            //});
+
+            //TO DO - take this out and make a separate function
             var currentSheet = tabletop.sheets("Living Dex").all();
              $.each(currentSheet, function( index, value ) {
                 var imageName = value.Name.split(' ').join('-');
@@ -156,6 +151,7 @@
                 imageName = imageName.replace(":", "");
                 imageName = imageName.replace("♀", "-f");
                 imageName = imageName.replace("♂", "-m");
+                imageName = imageName.replace("é", "e");
                 value["ImageName"] = imageName.toLowerCase();
 
                 var pokeballName = value.Ball.toLowerCase();
@@ -220,10 +216,10 @@
             // }
 
             // find total number of spots added
-            var theNumberofSpots = Sheetsee.ich.theNumberofSpots({
+            var pokemonCount = Sheetsee.ich.pokemonCount({
                 numberOfSpots: currentSheet.length
             })
-            $('#theNumberofSpots').html(theNumberofSpots)
+            $('#pokemonCount').html(pokemonCount)
 
             if(window.location.hash) {
                 $('#tableFilter').val(window.location.hash.substring(1)).keyup()
