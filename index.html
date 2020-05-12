@@ -6,7 +6,7 @@
         <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
         <script type="text/javascript" src='js/sheetsee.js'></script>
         <link rel="shortcut icon" href="https://raw.github.com/jlord/hack-spots/master/favico.png"/>
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic'>
         <link media="screen" rel="stylesheet" type="text/css" href="css/style.css">
@@ -17,15 +17,21 @@
         <h1>Pokedex</h1>
         <p id="pokemonCount"></p>
         <div class="container">
-            <input id="tableFilter" type="text" placeholder="filter by.."></input>
+            <div class="search">
+                <input type="text" class="searchTerm" placeholder="Search"></input>
+                <button type="submit" class="searchButton">
+                  <i class="fa fa-search"></i>
+               </button>
+             </div>
+            <!-- <input id="tableFilter" type="text" placeholder="filter by.."></input> -->
             <span class="noMatches">no matches</span>
-            <div id="hackSpotsTable"></div>
+            <div id="pokedexTable"></div>
         </div>
         <div id="info" class="container">
            <p>footer</p>
     </div><!-- end wrapper -->
 
-    <script id="hackSpotsTable" type="text/html">
+    <script id="pokedexTable" type="text/html">
         <table>
             <tr>
                 <th class="tHeader">Dex No.</th>
@@ -172,7 +178,7 @@
             });
              tableOptions = {
                  "data": currentSheet,
-                 "tableDiv": "#hackSpotsTable",
+                 "tableDiv": "#pokedexTable",
                  "filterDiv": "#tableFilter"
              }
             // make the table, and the search bar
