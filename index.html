@@ -3,18 +3,14 @@
         <title>Pokedex</title>
         <meta charset='utf-8'>
         <script type="text/javascript" src='js/jquery.js '></script>
-        <script type="text/javascript" src='js/tabletop1.3.4.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
         <script type="text/javascript" src='js/sheetsee.js'></script>
-        <script type="text/javascript" src='js/leaflet.markercluster.js'></script>
         <link rel="shortcut icon" href="https://raw.github.com/jlord/hack-spots/master/favico.png"/>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic'>
-        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700'>
         <link media="screen" rel="stylesheet" type="text/css" href="css/style.css">
         <link media="screen" rel="stylesheet" type="text/css" href="css/site.css">
-        <link rel="stylesheet" href="css/MarkerCluster.css" />
-        <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
     </head>
 <body>
     <div id="wrapper">
@@ -26,12 +22,14 @@
         </div>
         <div id="info" class="container">
            <p>footer</p>
+           <p id="theNumberofSpots"></p>
     </div><!-- end wrapper -->
 
     <script id="hackSpotsTable" type="text/html">
         <table>
             <tr>
-                <th class="tHeader">Name</th>
+                <th class="tHeader">Dex No.</th>
+                <th class="tHeader">Sprite</th>
                 <th class="tHeader">Pokemon</th>
                 <th class="tHeader">Types</th>
                 <th class="tHeader">Ability</th>
@@ -48,20 +46,25 @@
             </tr>
             {{#rows}}
                 <tr id="{{rowNumber}}" class="spotRow">
-                    <td>{{name}}</td>
-                    <td>{{name}}</td>
-                    <td>{{form}}</td>
-                    <td>{{sex}}</td>
-                    <td>{{amount}}</td>
-                    <td>{{country}}</td>
-                    <td>{{amount}}</td>
-                    <td>{{amount}}</td>
-                    <td>{{amount}}</td>
-                    <td>{{amount}}</td>
-                    <td>{{amount}}</td>
-                    <td>{{amount}}</td>
-                    <td>{{amount}}</td>
-                    <td>{{amount}}</td>
+                    <td>{{Dex No}}</td>
+                    <td><span 
+                        class="{{Name}}img"
+                        style="repeat scroll 0% 0%; width: 68px; height: 56px; display: inline-block;">
+                        <img src="https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/{{ImageName}}.png"/>
+                    </span></td>
+                    <td>{{Name}}</td>
+                    <td>{{Form}}</td>
+                    <!-- <td>{{sex}}</td> -->
+                    <td>{{Ability}}</td>
+                    <td>{{Nature}}</td>
+                    <td>{{Hp IV}}</td>
+                    <td>{{Atk IV}}</td>
+                    <td>{{Def IV}}</td>
+                    <td>{{SpAIV}}</td>
+                    <td>{{SpD IV}}</td>
+                    <td>{{Spe IV}}</td>
+                    <td>{{Move1}}, {{Move2}}, {{Move3}}, {{Move4}}</td>
+                    <td>{{Ball}}</td>
                     <td><a class="button" href="https://maps.google.com/maps?q={{form}},{{Sex}},{{amount}}"
                             target="_blank">G Map</a> <a class="button"
                             href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{Sex}},{{amount}}"
@@ -74,9 +77,9 @@
     <script id="latestSpot" type="text/html">
         {{#rows}}
             <h4 class="fauxButton">MOST RECENT SPOT</h4>
-            <h2>{{name}}</h2>
+            <h2>{{Name}}</h2>
             <p class="colorText">{{form}}<p>
-            <p class="colorText">{{sex}}{{#amount}}, {{amount}}{{/amount}}{{#nature}}, {{nature}}{{/nature}}</p>
+            <p class="colorText">{{ability}}{{#amount}}, {{amount}}{{/amount}}{{#nature}}, {{nature}}{{/nature}}</p>
             <ul>
                 <li><span class="category">Wifi:</span> {{wifipassword}}</li>
                 <li><span class="category">Outlets:</span> {{outlets}}</li>
@@ -94,7 +97,7 @@
     </script>
 
     <script id="theNumberofSpots" type="text/html">
-        <p><strong><span class="red-text">{{numberOfSpots}}</span> hack spots strong!</p>
+        <p><strong><span class="red-text">{{numberOfSpots}}</span> pokemon!</p>
     </script>
 
     <script id="selectedSpot" type="text/html">
@@ -102,7 +105,7 @@
             <h4 class="fauxButton">SELECTED SPOT</h4>
             <h2>{{name}}</h2>
             <p class="colorText">{{form}}<p>
-            <p class="colorText">{{sex}}{{#amount}}, {{amount}}{{/amount}}{{#nature}}, {{nature}}{{/nature}}</p>
+            <p class="colorText">{{ability}}{{#amount}}, {{amount}}{{/amount}}{{#nature}}, {{nature}}{{/nature}}</p>
             <ul>
                 <li><span class="category">Wifi:</span> {{wifipassword}}</li>
                 <li><span class="category">Outlets:</span> {{outlets}}</li>
@@ -120,87 +123,83 @@
 
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            var gData
-            var URL = "1j9zYY17BV6hOZ5BElP3Yj3P64si6oaq6kI9syep-Buw" //Google Sheets ID
-                Tabletop.init({ key: URL, callback: showInfo, simpleSheet: true })
-        })
-
+            //var gData
+           // var URL = "1j9zYY17BV6hOZ5BElP3Yj3P64si6oaq6kI9syep-Buw" //Google Sheets ID
+            var URL = "1RSXuh7-WU8ZA3lU6e143WT0sws5upz_R0j-wncTdL0I"
+                Tabletop.init({ key: URL, callback: showInfo, simpleSheet: false })
+                //var taco = Tabletop.sheets("DB");
+                //console.log(tableOptions.data);
+        }) 
         // so long, so messy
-        function showInfo(gData) {
-            tableOptions = {
-                "data": gData,
-                "tableDiv": "#hackSpotsTable",
-                "filterDiv": "#tableFilter"
-            }
+        function showInfo(data, tabletop) {
+            console.log(tabletop.sheets("Living Dex"));
+           // $.each(data, function( index, value ) {
+                //value["ImageName"] = value.Name.toLowerCase();
+                //console.log(value.ImageName);  
+            //});
+            var currentSheet = tabletop.sheets("Living Dex").all();
+             $.each(currentSheet, function( index, value ) {
+                var imageName = value.Name.split(' ').join('-');
+                imageName = imageName.replace("'", "");
+                imageName = imageName.replace(".", "");
+                imageName = imageName.replace(":", "");
+                value["ImageName"] = imageName.toLowerCase();
+            });
+             tableOptions = {
+                 "data": currentSheet,
+                 "tableDiv": "#hackSpotsTable",
+                 "filterDiv": "#tableFilter"
+             }
             // make the table, and the search bar
             Sheetsee.makeTable(tableOptions)
             Sheetsee.initiateTableFilter(tableOptions)
-
             // create geoJSON with coordinates and other
             // useful bits from the original data
-            var optionsJSON = ["name", "form", "sex", "rowNumber"]
-            var geoJSON = Sheetsee.createGeoJSON(gData, optionsJSON)
-
+            //var optionsJSON = ["Name", "Form", "Sex", "rowNumber"]
+            //var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
+            //var pokename = data[2].name;
+            //pokename = pokename.toLowerCase();
+            //console.log(pokename)//.toLowerCase());
+            //console.log(geoJSON);
             // find the latest spot with the most important
             // info filled in (to prevent map breaking if
             // someone is currently editing spreadsheet)
-            var theLatestSpot = findLatestCompleteSpot(gData)
-            var latestSpot = Sheetsee.ich.latestSpot({
-                rows: theLatestSpot
-            })
+            //var theLatestSpot = findLatestCompleteSpot(data)
+            // var latestSpot = Sheetsee.ich.latestSpot({
+            //     rows: theLatestSpot
+            // })
 
             // when someone clicks on a row, highlight it and
             // re-center the map
             // TODO show popup, change marker color
-            $('.spotRow').live("click", function(event) {
-                $('.spotRow').removeClass("selectedRow")
-                var rowNumber = $(this).closest("tr").attr("id")
-                $('#' + rowNumber).addClass("selectedRow")
-                var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
-                var selectedSpot = Sheetsee.ich.selectedSpot({
-                    rows: dataElement
-                })
-                $('#latestSpot').css("display", "none")
-                $('#selectedSpot').html(selectedSpot).css("display", "inline")
-            })
-
-            // so that the first map and info that loads
-            // is complete and doesn't show rows that are
-            // actively being edited by folk
-            function findLatestCompleteSpot(data) {
-                var latestCompleteSpot = []
-                var startWithLatestRow = data.reverse()
-                startWithLatestRow.forEach(function(row){
-                    if (!row.lat || !row.long || !row.name || !row.form || !row.sex || !row.amount ) return
-                    else latestCompleteSpot.push(row)
-                })
-                return latestCompleteSpot[0]
-            }
-
-            // Add click listener to the markerLayer
-            // markerLayer.on('click', function(e) {
-            //     // clear any selected rows
+            // $('.spotRow').live("click", function(event) {
             //     $('.spotRow').removeClass("selectedRow")
-            //     // get row number of selected marker
-            //     var rowNumber = e.layer.feature.opts.rowNumber
-            //     // find that row in the table and make consider it selected
+            //     var rowNumber = $(this).closest("tr").attr("id")
             //     $('#' + rowNumber).addClass("selectedRow")
-            //     // using row number, get the data for the selected spot
-            //     var dataElement = Sheetsee.getMatches(gData, rowNumber.toString(), "rowNumber")
-            //     // take those details and re-write the selected spot section
+            //     var dataElement = Sheetsee.getMatches(data, rowNumber, "rowNumber")
             //     var selectedSpot = Sheetsee.ich.selectedSpot({
             //         rows: dataElement
             //     })
-            //     // center the map on the selected element
-            //     map.panTo([dataElement[0].lat, dataElement[0].long])
-            //     // update the spot listing
             //     $('#latestSpot').css("display", "none")
             //     $('#selectedSpot').html(selectedSpot).css("display", "inline")
             // })
 
+            // so that the first map and info that loads
+            // is complete and doesn't show rows that are
+            // actively being edited by folk
+            // function findLatestCompleteSpot(data) {
+            //     var latestCompleteSpot = []
+            //     var startWithLatestRow = data.reverse()
+            //     startWithLatestRow.forEach(function(row){
+            //         if (!row.lat || !row.long || !row.name || !row.form || !row.sex || !row.amount ) return
+            //         else latestCompleteSpot.push(row)
+            //     })
+            //     return latestCompleteSpot[0]
+            // }
+
             // find total number of spots added
             var theNumberofSpots = Sheetsee.ich.theNumberofSpots({
-                numberOfSpots: gData.length
+                numberOfSpots: currentSheet.length
             })
             $('#theNumberofSpots').html(theNumberofSpots)
 
