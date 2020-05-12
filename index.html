@@ -161,6 +161,10 @@
                 var pokeballName = value.Ball.toLowerCase();
                 pokeballName = pokeballName.replace("ball", "");
                 pokeballName = pokeballName.replace(" ", "");
+                pokeballName = pokeballName.replace("é", "e");
+                if (pokeballName == null) {
+                    pokeballName = "poke";
+                }
                 value["Ball"] = pokeballName.toLowerCase();
             });
              tableOptions = {
