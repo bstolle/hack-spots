@@ -11,8 +11,8 @@ Great for visualizing data on a living pokedex
 
 * Browse the list of all Pokémon and find just the Pokémon you want using a plethora of filters
 * Make your own custom filter or sorting function if you know javascript
-~~* Import Pokémon from various formats: JSON / CSV / TSV / Smogon / Reddit Markdown Table
-* Or even import using javascript, and make use of all the extra possibilities that entails~~
+* ~~Import Pokémon from various formats: JSON / CSV / TSV / Smogon / Reddit Markdown Table~~
+* ~~Or even import using javascript, and make use of all the extra possibilities that entails~~
 * Export Pokémon to most of those same formats
 * Browse all your Pokémon, or just those in specific tabs
 * Edit Pokémon and Pokémon collections
