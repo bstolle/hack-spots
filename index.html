@@ -42,7 +42,7 @@
                 <th class="tHeader">Spe</th>
                 <th class="tHeader">Moves</th>
                 <th class="tHeader">Balls</th>
-                <th class="">Elsewhere</th>
+                <th class="">Bulbapedia</th>
             </tr>
             {{#rows}}
                 <tr id="{{rowNumber}}" class="spotRow">
@@ -70,10 +70,12 @@
                     <td></td>
                     {{/Move 1}}
                     <td>{{Ball}}</td>
-                    <td><a class="button" href="https://maps.google.com/maps?q={{form}},{{Sex}},{{amount}}"
-                            target="_blank">G Map</a> <a class="button"
+                    <td><a class="button" href="https://bulbapedia.bulbagarden.net/wiki/{{Name}}_(Pok%C3%A9mon)"
+                            target="_blank">visit</a> 
+                            <!-- <a class="button"
                             href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{Sex}},{{amount}}"
-                            target="_blank">Yelp</a></td>
+                            target="_blank">Yelp</a> -->
+                        </td>
                 </tr>
             {{/rows}}
         </table>
