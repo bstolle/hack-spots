@@ -148,6 +148,8 @@
                 imageName = imageName.replace("'", "");
                 imageName = imageName.replace(".", "");
                 imageName = imageName.replace(":", "");
+                imageName = imageName.replace("♀", "f");
+                imageName = imageName.replace("♂", "m");
                 value["ImageName"] = imageName.toLowerCase();
             });
              tableOptions = {
