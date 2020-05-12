@@ -157,6 +157,11 @@
                 imageName = imageName.replace("♀", "-f");
                 imageName = imageName.replace("♂", "-m");
                 value["ImageName"] = imageName.toLowerCase();
+
+                var pokeballName = value.Ball.toLowerCase();
+                pokeballName = pokeballName.replace("ball", "");
+                pokeballName = pokeballName.replace(" ", "");
+                value["Ball"] = pokeballName.toLowerCase();
             });
              tableOptions = {
                  "data": currentSheet,
