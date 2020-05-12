@@ -42,7 +42,6 @@ text {
   width: 100%;
   position: relative;
   display: flex;
-  box-shadow: 0px 3px 6px  rgba(0,0,0, 0.2);
 }
 
 .searchTerm {
@@ -53,7 +52,7 @@ text {
   height: 36px;
   border-radius: 24px 0 0 24px;
   outline: none;
-
+  box-shadow: 0px 3px 6px  rgba(0,0,0, 0.2);
   color: black; /* placeholder text color */
 }
 
@@ -71,9 +70,10 @@ text {
   border-radius: 0 24px 24px 0;
   cursor: pointer;
   font-size: 20px;
+  box-shadow: 0px 3px 6px  rgba(0,0,0, 0.2);
 }
 
-#tableFilter {
+/* #tableFilter {
   margin: 12px 0px;
   border: none;
   border-bottom: 1px solid #333;
@@ -83,7 +83,7 @@ text {
   color: #fff;
   font-size: 13px;
   height: 22px;
-}
+} */
 
 .noMatches {
   margin-left: 20px;
