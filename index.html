@@ -69,7 +69,11 @@
                     {{^Move 1}}
                     <td></td>
                     {{/Move 1}}
-                    <td>{{Ball}}</td>
+                    <td class="smallSprite"><span 
+                        class="{{Ball}}img"
+                        style="repeat scroll 0% 0%; display: inline-block;">
+                        <img src="https://raw.githubusercontent.com/msikma/pokesprite/master/items/ball//{{Ball}}.png"/>
+                    </span></td>
                     <td><a class="button" href="https://bulbapedia.bulbagarden.net/wiki/{{Name}}_(Pok%C3%A9mon)"
                             target="_blank">visit</a> 
                             <!-- <a class="button"
@@ -150,8 +154,8 @@
                 imageName = imageName.replace("'", "");
                 imageName = imageName.replace(".", "");
                 imageName = imageName.replace(":", "");
-                imageName = imageName.replace("♀", "f");
-                imageName = imageName.replace("♂", "m");
+                imageName = imageName.replace("♀", "-f");
+                imageName = imageName.replace("♂", "-m");
                 value["ImageName"] = imageName.toLowerCase();
             });
              tableOptions = {
