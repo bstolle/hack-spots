@@ -63,7 +63,12 @@
                     <td>{{SpA IV}}</td>
                     <td>{{SpD IV}}</td>
                     <td>{{Spe IV}}</td>
+                  {{#Move 1}}
                     <td>{{Move 1}}, {{Move 2}}, {{Move 3}}, {{Move 4}}</td>
+                    {{/Move 1}}
+                    {{^Move 1}}
+                    <td></td>
+                    {{/Move 1}}
                     <td>{{Ball}}</td>
                     <td><a class="button" href="https://maps.google.com/maps?q={{form}},{{Sex}},{{amount}}"
                             target="_blank">G Map</a> <a class="button"
