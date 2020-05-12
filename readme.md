@@ -11,8 +11,8 @@ Great for visualizing data on a living pokedex
 
 * Browse the list of all Pokémon and find just the Pokémon you want using a plethora of filters
 * Make your own custom filter or sorting function if you know javascript
-* Import Pokémon from various formats: JSON / CSV / TSV / Smogon / Reddit Markdown Table
-* Or even import using javascript, and make use of all the extra possibilities that entails
+* ~~Import Pokémon from various formats: JSON / CSV / TSV / Smogon / Reddit Markdown Table~~
+* ~~Or even import using javascript, and make use of all the extra possibilities that entails~~
 * Export Pokémon to most of those same formats
 * Browse all your Pokémon, or just those in specific tabs
 * Edit Pokémon and Pokémon collections
@@ -128,7 +128,3 @@ Replace the existing spreadsheet URL key with your spreadsheet's key. You'll fin
 Commit those changes and **LIKE WOAH** you now have a version of this website hooked to a spreadsheet that you can distrubute however you'd like.
 
 You can find your version at **yourGitHubName.github.io/theReposName** (in this case /hack-spots).
-
-## But How?
-
-A Google Spreadsheet holds all the data and it is connected to this website using the goodies in [sheetsee.js](http://www.github.com/jlord/sheetsee.js). Everytime you visit the website, you'll have the most up to date data that has been entered into the spreadsheet. 
