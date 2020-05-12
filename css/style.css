@@ -30,6 +30,14 @@ text {
   font-size: 14px;
 }
 
+.dexNo {
+  max-width: 20px
+}
+
+.smallSprite {
+  width: 68px;
+}
+
 #tableFilter {
   margin: 12px 0px;
   border: none;
